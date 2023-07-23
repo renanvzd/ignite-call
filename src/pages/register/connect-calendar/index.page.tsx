@@ -17,6 +17,8 @@ export default function Register() {
     await signIn('google')
   }
 
+  console.log(session)
+
   return (
     <Container>
       <Header>
@@ -52,7 +54,7 @@ export default function Register() {
         {hasAuthError && (
           <AuthError size="sm">
             Falha ao se conectar ao Google, verifique se você habilitou as
-            permissões de acesso ao Google Calendar.
+            permissões de acesso ao Google Calendar
           </AuthError>
         )}
 
