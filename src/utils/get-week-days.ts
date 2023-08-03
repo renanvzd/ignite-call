@@ -7,7 +7,7 @@ export function getWeekDays({ short = false }: GetWeekDaysParams = {}) {
 
   return (
     Array.from(Array(7).keys())
-      .map((day) => formatter.format(new Date(Date.UTC(2021, 5, day))))
+      .map((day) => formatter.format(new Date(Date.UTC(2021, 1, day))))
       // pegar o ano e o mes que o dia comeca no dia 01
       .map((weekDay) => {
         if (short) {
