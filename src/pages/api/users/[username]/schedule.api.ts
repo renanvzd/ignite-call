@@ -36,7 +36,8 @@ export default async function handler(
     req.body,
   )
 
-  const schedulingDate = dayjs(date).startOf('hour')
+  // const schedulingDate = dayjs(date).startOf('hour')
+  const schedulingDate = dayjs(date).add(1, 'hour').startOf('hour')
 
   if (schedulingDate.isBefore(new Date())) {
     return res.status(400).json({
@@ -78,11 +79,17 @@ export default async function handler(
     requestBody: {
       summary: `Renan's Meeting: ${name}`,
       description: observations,
+      // start: {
+      //   dateTime: schedulingDate.format(),
+      // },
+      // end: {
+      //   dateTime: schedulingDate.add(1, 'hour').format(),
+      // },
       start: {
-        dateTime: schedulingDate.format(),
+        dateTime: schedulingDate.subtract(1, 'hour').format(),
       },
       end: {
-        dateTime: schedulingDate.add(1, 'hour').format(),
+        dateTime: schedulingDate.format(),
       },
       attendees: [{ email, displayName: name }],
       conferenceData: {
